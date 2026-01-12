@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Calculus Visual Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+:root{
+  --ink:#1f2937;
+  --paper:#fffef9;
+  --accent1:#ff5fa2;
+  --accent2:#3f7cff;
+  --accent3:#4caf50;
+  --accent4:#f5c400;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Segoe UI',system-ui,sans-serif;
+  color:var(--ink);
+  background:#eceff5;
+  overflow-x:hidden;
+}
+
+/* ===== PARALLAX BACKGROUND ===== */
+.parallax{
+  position:fixed;
+  inset:0;
+  z-index:-10;
+  overflow:hidden;
+}
+.layer{
+  position:absolute;
+  inset:-20%;
+  opacity:.35;
+  animation:drift linear infinite;
+}
+.layer.grid{
+  background-image:
+    linear-gradient(rgba(0,0,0,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.04) 1px,transparent 1px);
+  background-size:40px 40px;
+  animation-duration:140s;
+}
+.layer.paper{
+  background:radial-gradient(circle at 30% 20%,#ffffff 0,#f3f4f6 45%,transparent 70%);
+  animation-duration:110s;
+}
+.layer.color{
+  background:conic-gradient(from 180deg,var(--accent1),var(--accent2),var(--accent3),var(--accent4),var(--accent1));
+  opacity:.08;
+  animation-duration:180s;
+}
+
+@keyframes drift{
+  to{transform:translate3d(12%,12%,0)}
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  position:fixed;
+  left:40px;
+  top:0;
+  bottom:0;
+  width:4px;
+  background:linear-gradient(var(--accent1),var(--accent2),var(--accent3));
+  opacity:.6;
+}
+.dot{
+  position:absolute;
+  left:-6px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:white;
+  box-shadow:0 0 0 4px rgba(0,0,0,.15);
+}
+
+/* ===== SECTIONS ===== */
+section{
+  max-width:1100px;
+  margin:140px auto;
+  padding:90px 80px;
+  background:var(--paper);
+  border-radius:32px;
+  box-shadow:0 40px 120px rgba(0,0,0,.25);
+  opacity:0;
+  transform:translateY(120px) scale(.9);
+  transition:1.2s cubic-bezier(.19,1,.22,1);
+}
+section.show{
+  opacity:1;
+  transform:none;
+}
+
+section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:32px;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,.04) 0,
+    rgba(0,0,0,.04) 1px,
+    transparent 1px,
+    transparent 30px
+  );
+  pointer-events:none;
+}
+
+h1{
+  text-align:center;
+  font-size:42px;
+  letter-spacing:5px;
+  margin-bottom:70px;
+}
+
+/* ===== CARD SYSTEM ===== */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+}
+
+.box{
+  padding:34px;
+  border-radius:26px;
+  background:linear-gradient(145deg,#ffffff,#fff7e2);
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  font-size:18px;
+  transition:.6s cubic-bezier(.19,1,.22,1);
+  position:relative;
+}
+
+.box::before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  border-radius:28px;
+  background:conic-gradient(var(--accent1),var(--accent2),var(--accent3),var(--accent4),var(--accent1));
+  opacity:.35;
+  filter:blur(8px);
+  z-index:-1;
+  animation:spin 10s linear infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.box:hover{
+  transform:translateY(-22px) scale(1.08);
+}
+
+/* ===== COLOR TAGS ===== */
+.pink{border-left:7px solid var(--accent1)}
+.blue{border-left:7px solid var(--accent2)}
+.green{border-left:7px solid var(--accent3)}
+.yellow{border-left:7px solid var(--accent4)}
+.red{border-left:7px solid #ef4444}
+/*=====image======*/
+ .image-wrapper1 {
+  height: 500px;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 50px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="parallax">
+  <div class="layer grid"></div>
+  <div class="layer paper"></div>
+  <div class="layer color"></div>
+</div>
+
+<div class="timeline"></div>
+<section>
+<h1>Expressing Changing Quantities Using Derivatives:-:-</h1>
+  <div class="box red"><p>Derivatives are used to express how one quantity changes with respect to another. This concept is known as the rate of change and is fundamental in understanding motion, growth, and variation.
+<ul>Examples:</ul>
+<li> If s(t)represents displacement with respect to time, then:</li>
+<li>Velocity: v(t)=ds/dt</li>
+<li>Acceleration: a(t)=dv/dt</li>
+This shows how derivatives help model physical and engineering systems.</p>
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+<section>
+<h1>First and Second Derivative Tests:-
+</h1>
+  <div class="box red"><p>Derivative tests are used to determine the nature of critical points and the behavior of functions.
+<li>First Derivative Test:  Identifies intervals where a function is increasing or decreasing<li>
+<li>Second Derivative Test:  Determines whether a critical point is a maximum or minimum</li>
+<ul>Examples:</ul>
+<li>For f(x)=x3−3x2+2f(x) </li>
+<li>f′(x)=3x2−6xf'(x) <li/>
+<li>Critical points at x=0 and x=2</li></p>
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+<section>
+<h1>Increasing and Decreasing Functions:-
+</h1>
+  <div class="box red"><p>A function is:
+<li>Increasing where f′(x)>0</li>
+<li>Decreasing where f′(x)<0</li>
+<ul>This analysis helps understand trends and behavior of graphs over intervals.</ul>
+</p>
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+<section>
+<h1>Extrema of a Function on a Closed Interval:-
+
+</h1>
+  <div class="box red"><p>To find absolute maximum and minimum values on a closed interval [a,b][a, b][a,b], the function is evaluated at:
+<li>Critical points within the interval</li>
+<li>Endpoints of the interval</li>
+<li>The largest and smallest values among these give the extrema.</li>
+<ul>Examples:</ul>
+Finding maximum profit or minimum cost in engineering optimization problems.
+
+
+</p>
+</div>
+</section>
+<section>
+<h1>Concavity and Points of Inflection:-
+</h1>
+  <div class="box red"><p>Concavity describes the curvature of a graph and is determined using the second derivative.
+<li>Concave up: f′′(x)>0</li>
+<li>Concave down: f′′(x)<0</li>
+<li>Point of inflection: Where concavity changes sign</li>
+<ul>Examples:</ul>
+<li>If f′′(x)=6x−6, the point of inflection occurs at x=1</li></p>
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+<section>
+<h1>Indeterminate Forms in Limits:-
+</h1>
+  <div class="box red"><p>Some limits lead to indeterminate forms, which cannot be evaluated directly.
+<li>Common forms include:</li>
+<li>0/0</li>
+<li>∞/∞</li>
+<ul>These forms require special techniques for evaluation</ul></p>
+</div>
+</section>
+
+<section>
+<h1>L’Hospital’s Rule:-
+</h1>
+  <div class="box red"><p>L’Hospital’s Rule is used to evaluate limits resulting in indeterminate forms by differentiating the numerator and denominator.
+                                                                                                                      <li> lim x→af(x)/g(x)​=limx→a​f′(x)/​​g′(x)</li>
+<ul>Examples:</ul>
+                                                                <li>limx→0​sinx/x​=1</li> 
+</p>
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+
+<section>
+<h1>NUMERIAL METHOD
+</h1>
+  <div class="box red"><p><h2>Bisection Method:-</h2>
+The Bisection Method finds roots by repeatedly dividing an interval where the function changes sign.
+
+
+<li>Simple and reliable</li>
+<li>Guaranteed convergence</li>
+<li>Slower compared to other methods</li></p>
+
+</div>
+
+
+
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+<section>
+<h1>Newton–Raphson Method:-
+</h1>
+  <div class="box red"><p>The Newton–Raphson Method uses tangent lines to approximate roots of equations.
+Faster convergence
+<li>Requires derivative</li>
+<li>Efficient for engineering applications</li>
+
+<ul> Example:</ul>
+              <ul>Solving  x^3−x−1=0</ul>
+</p>
+</div>
+<div class="box blue"><div class="image wrapper1"><img src=""></div></div>
+</section>
+
+
+<section>
+<h1> REFLECTIONS </h1>
+  <div class="box yellow"><p>This chapter provided a deep understanding of how derivatives are used to study change, optimize results, and analyze 
+  the behavior of functions. Concepts such as extrema, concavity, and inflection points improved my ability to interpret and sketch graphs accurately.
+  The study of indeterminate forms and numerical methods introduced practical techniques for solving complex equations. Overall, this chapter
+  strengthened my analytical thinking and demonstrated the importance of derivatives in real-life and engineering applications.
+</p>
+  
+
+</div>
+</section>
+
+<script>
+/* ===== SCROLL REVEAL ===== */
+const sections = document.querySelectorAll('section');
+const timeline = document.querySelector('.timeline');
+
+sections.forEach((sec,i)=>{
+  const dot=document.createElement('div');
+  dot.className='dot';
+  dot.style.top=(140+i*180)+'px';
+  timeline.appendChild(dot);
+});
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+    }
+  });
+},{threshold:.3});
+
+sections.forEach(s=>observer.observe(s));
+</script>
+
+</body>
+</html>
